@@ -8,7 +8,7 @@ namespace LawnMowers.Tests
     public class ProgramFixture
     {
         [Fact]
-        public static void ShouldPrintDefaultOutput()
+        public void ShouldPrintDefaultOutput()
         {
             var stringWriter = new StringWriter();
             Console.SetOut(stringWriter);            
