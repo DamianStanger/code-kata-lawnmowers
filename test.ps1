@@ -1,2 +1,5 @@
 Write-host -ForegroundColor Yellow "Starting Unit tests"
-dotnet test .\test\LawnMowers.Tests\project.json
+Push-Location
+cd .\test\LawnMowers.Tests\
+dotnet test
+Pop-Location

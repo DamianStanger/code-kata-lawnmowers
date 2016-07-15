@@ -6,7 +6,8 @@ namespace LawnMowers
     {
         public static void Main(string[] args)
         {
-            Commands commands = new CommandReader().Read("TestData\\test-input.mow");       
+            Commands commands = new CommandReader().Read("TestData\\test-input.mow");
+            Lawn lawn = new Lawn(commands.LawnSize);    
             Console.WriteLine("1 3 N");
             Console.WriteLine("5 1 E");
         }
