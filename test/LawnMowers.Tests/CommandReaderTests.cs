@@ -8,8 +8,8 @@ namespace LawnMowers.Tests
         [Fact]
         public void RetunsPopulatedCommandsObject()
         {
-            var commandReader = new CommandReader();
-            var commands = commandReader.Read("TestData\\test-file.mow");
+            var commandReader = new CommandFileReader("TestData\\test-file.mow");
+            var commands = commandReader.Read();
 
             commands.Count.Should().Be(3);
             commands[0].Should().Be("Line 1");

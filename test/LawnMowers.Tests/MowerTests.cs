@@ -12,7 +12,8 @@ namespace LawnMowers.Tests
 
             mower.Mow(new Lawn("2 3"));
 
-            mower.Location.Should().Be("2 3 N");
+            mower.Location.X.Should().Be(2);
+            mower.Location.Y.Should().Be(3);
         }
     }
 }

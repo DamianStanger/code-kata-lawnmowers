@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace LawnMowers
 {
@@ -7,15 +6,21 @@ namespace LawnMowers
     {
         public static void Main(string[] args)
         {
-            Commands commands = new CommandReader().Read("TestData\\test-input.mow");
+            ICommandReader commandReader = new CommandFileReader("TestData\\test-input.mow");
+            Commands commands = commandReader.Read();
+
             Lawn lawn = new Lawn(commands.LawnSize);
             IList<Mower> mowers = commands.GetMowers();
             foreach (var mower in mowers)
             {
                 mower.Mow(lawn);
             }
-            Console.WriteLine("1 3 N");
-            Console.WriteLine("5 1 E");
+
+            IGardenerReporter reporter = new ConsoleReporter(new ConsoleAdapter());
+            mowers.Clear();
+            mowers.Add(new Mower("1 3 N", ""));
+            mowers.Add(new Mower("5 1 E", ""));
+            reporter.ReportOn(mowers);
         }
     }
 }
