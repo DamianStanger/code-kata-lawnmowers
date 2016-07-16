@@ -11,6 +11,7 @@ namespace LawnMowers
 
         public Lawn(string lawnSize)
         {
+            //TODO ensure lawn is no a negative size!!
             var coordinates = lawnSize.Split(' ');
             int x;
             int y;

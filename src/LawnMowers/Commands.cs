@@ -12,6 +12,8 @@ namespace LawnMowers
             var mowers = new List<Mower>();
             for (int i = 1; i < this.Count; i++)
             {
+                //pairs of strings contribute to single mowers
+                //TODO handle missing startpoints or commands (potential out of bounds exception)
                 string startpoint = this[i];
                 string commands = this[++i];
                 var mower = new Mower(startpoint, commands);

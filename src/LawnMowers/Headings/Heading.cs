@@ -13,6 +13,7 @@ namespace LawnMowers.Headings
 
         public static Heading GetHeading(string startpoint)
         {
+            //TODO validate the last char really is a valid heading
             string headingChar = startpoint.ToCharArray().Last().ToString();
             return Headings.Single(x => x.ToString() == headingChar);
         }

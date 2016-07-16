@@ -4,9 +4,10 @@ namespace LawnMowers
 {
     public class Coordinate
     {
-        public Coordinate(string _startpoint)
+        public Coordinate(string startpoint)
         {
-            var strings = _startpoint.Split(' ');
+            //TODO validate inputs are positive integers
+            var strings = startpoint.Split(' ');
             X = Int32.Parse(strings[0]);
             Y = Int32.Parse(strings[1]);
         }

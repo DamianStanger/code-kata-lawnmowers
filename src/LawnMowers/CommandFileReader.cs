@@ -14,6 +14,7 @@ namespace LawnMowers
 
         public Commands Read()
         {
+            //TODO hadle file not found exceptions
             var streamReader = new StreamReader(new FileStream(_commandFile, FileMode.Open));
             var commands = new Commands();
             while (!streamReader.EndOfStream)
