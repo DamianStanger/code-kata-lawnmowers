@@ -17,9 +17,6 @@ namespace LawnMowers
             }
 
             IGardenerReporter reporter = new ConsoleReporter(new ConsoleAdapter());
-            mowers.Clear();
-            mowers.Add(new Mower("1 3 N", ""));
-            mowers.Add(new Mower("5 1 E", ""));
             reporter.ReportOn(mowers);
         }
     }

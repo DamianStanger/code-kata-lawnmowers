@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using LawnMowers.Headings;
 
 namespace LawnMowers
 {
@@ -12,7 +13,7 @@ namespace LawnMowers
             _movementCommands = movementCommands;
 
             Location = new Coordinate(startpoint);
-            Heading = new Heading(startpoint);
+            Heading = Heading.GetHeading(startpoint);
         }
 
         public Coordinate Location { get; private set; }
@@ -20,22 +21,13 @@ namespace LawnMowers
 
         public void Mow(Lawn lawn)
         {
-            
-        }
-    }
-
-    public class Heading
-    {
-        private readonly char _heading;
-
-        public Heading(string startpoint)
-        {
-            _heading = startpoint.ToCharArray().Last();
-        }
-
-        public override string ToString()
-        {
-            return _heading.ToString();
+            //TODO boundary checking on the lawn
+            foreach (var cmd in _movementCommands.ToCharArray())
+            {
+                Tuple<Coordinate,Heading> locationHeading = Heading.ProcessCommand(cmd, Location);
+                Location = locationHeading.Item1;
+                Heading = locationHeading.Item2;
+            }
         }
     }
 }

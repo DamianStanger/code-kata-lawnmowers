@@ -3,13 +3,18 @@
 namespace LawnMowers
 {
     public class Coordinate
-    {  
-
+    {
         public Coordinate(string _startpoint)
         {
             var strings = _startpoint.Split(' ');
             X = Int32.Parse(strings[0]);
             Y = Int32.Parse(strings[1]);
+        }
+
+        public Coordinate(int x, int y)
+        {
+            X = x;
+            Y = y;
         }
 
         public int X { get; private set; }
