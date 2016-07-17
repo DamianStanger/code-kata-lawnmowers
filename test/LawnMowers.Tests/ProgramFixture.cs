@@ -21,5 +21,11 @@ namespace LawnMowers.Tests
             lines[0].Should().Be("1 3 N");
             lines[1].Should().Be("5 1 E");
         }
+
+        [Fact]
+        public void ShouldReportFatalError()
+        {
+            //TODO need to extend the functionality of the program main to customise the command reader so it throws errors maybe
+        }
     }
 }

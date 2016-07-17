@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 
 namespace LawnMowers
 {
@@ -14,14 +13,18 @@ namespace LawnMowers
 
         public Commands Read()
         {
-            //TODO hadle file not found exceptions
-            var streamReader = new StreamReader(new FileStream(_commandFile, FileMode.Open));
+            var fileStream = new FileStream(_commandFile, FileMode.Open);
             var commands = new Commands();
-            while (!streamReader.EndOfStream)
+
+            using (var streamReader = new StreamReader(fileStream))
             {
-                var readLine = streamReader.ReadLine();
-                commands.Add(readLine);
+                while (!streamReader.EndOfStream)
+                {
+                    var readLine = streamReader.ReadLine();
+                    commands.Add(readLine);
+                }
             }
+
             return commands;
         }
     }

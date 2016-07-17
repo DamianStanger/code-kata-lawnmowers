@@ -19,6 +19,11 @@ namespace LawnMowers
                 _consoleAdapter.WriteLine($"{mower.Location.X} {mower.Location.Y} {mower.Heading}");
             }
         }
+
+        public void ReportError(Exception exception)
+        {
+            _consoleAdapter.WriteLine($"{exception.GetType()} encounted - {exception.Message} : Please contact the head gardener for details!");
+        }
     }
 
     public class ConsoleAdapter

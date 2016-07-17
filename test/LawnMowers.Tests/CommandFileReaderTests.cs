@@ -1,9 +1,11 @@
-﻿using FluentAssertions;
+﻿using System;
+using System.IO;
+using FluentAssertions;
 using Xunit;
 
 namespace LawnMowers.Tests
 {
-    public class CommandReaderTests
+    public class CommandFileReaderTests
     {
         [Fact]
         public void RetunsPopulatedCommandsObject()
@@ -16,5 +18,16 @@ namespace LawnMowers.Tests
             commands[1].Should().Be("Line 2");
             commands[2].Should().Be("Line 3.");
         }
+
+        [Fact]
+        public void ThrowsExceptionWhenFileIssuesOccur()
+        {
+            var commandReader = new CommandFileReader("TestData\\test-file-missing.mow");
+
+            Exception ex = Assert.Throws<FileNotFoundException>(() => commandReader.Read());
+
+            ex.Message.Should().StartWith("Could not find file");
+        }
     }
 }
+

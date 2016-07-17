@@ -56,6 +56,15 @@ namespace LawnMowers.Tests
             _mockConsoleAdapter.Lines[0].Should().Be("1 3 N");
             _mockConsoleAdapter.Lines[1].Should().Be("5 1 E");
         }
+
+        [Fact]
+        public void ShouldReportErrors()
+        {
+            _consoleReporter.ReportError(new LawnSizeException("foobar foo bar"));
+
+            _mockConsoleAdapter.Lines.Count.Should().Be(1);
+            _mockConsoleAdapter.Lines[0].Should().Be("LawnMowers.LawnSizeException encounted - foobar foo bar is an invalid lawn size : Please contact the head gardener for details!");
+        }
     }
 
     public class MockConsoleAdapter : ConsoleAdapter

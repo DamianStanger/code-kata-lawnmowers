@@ -11,7 +11,7 @@ namespace LawnMowers
 
         public Lawn(string lawnSize)
         {
-            //TODO ensure lawn is no a negative size!!
+            //TODO ensure lawn is not a negative size!!
             var coordinates = lawnSize.Split(' ');
             int x;
             int y;
@@ -28,5 +28,9 @@ namespace LawnMowers
         }
 
 
+        public bool IsOnLawn(Coordinate location)
+        {
+            return location.X >= 0 && location.X <= X && location.Y >= 0 && location.Y <= Y;
+        }
     }
 }

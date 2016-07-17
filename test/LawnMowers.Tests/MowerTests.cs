@@ -1,4 +1,5 @@
 ﻿using FluentAssertions;
+using LawnMowers.Headings;
 using Xunit;
 
 namespace LawnMowers.Tests
@@ -26,6 +27,29 @@ namespace LawnMowers.Tests
 
             mower.Location.X.Should().Be(2);
             mower.Location.Y.Should().Be(4);            
+        }
+
+        [Fact]
+        public void ShouldNotMoveOffTheLawn()
+        {
+            var mower = new Mower("10 10 N", "MRM");
+
+            mower.Mow(new Lawn("10 10"));
+
+            mower.Location.X.Should().Be(10);
+            mower.Location.Y.Should().Be(10);
+        }
+
+        [Fact]
+        public void ShouldNotMoveOrTurnIfMowerIsPlacedInTheFlowerBeds()
+        {
+            var mower = new Mower("10 10 N", "MRMR");
+
+            mower.Mow(new Lawn("5 5"));
+
+            mower.Location.X.Should().Be(10);
+            mower.Location.Y.Should().Be(10);
+            mower.Heading.Should().BeOfType<North>();
         }
     }
 }
